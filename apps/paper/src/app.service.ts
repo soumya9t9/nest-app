@@ -6,7 +6,7 @@ import { delay, map, of } from 'rxjs';
 export class AppService {
 
   constructor(
-    @Inject('SERVICE_GATEWAY') private readonly clientServiceA: ClientProxy,
+    // @Inject('SERVICE_GATEWAY') private readonly clientServiceA: ClientProxy,
   ) { }
 
   getHello(): string {
@@ -19,15 +19,15 @@ export class AppService {
     return of('pong').pipe(delay(500));
   }
 
-  pingServiceA() {
-    const startTs = Date.now();
-    const pattern = { cmd: 'ping' };
-    const payload = {};
-    return this.clientServiceA
-      .send<string>(pattern, payload)
-      .pipe(
-        map((message: string) => ({ message, duration: Date.now() - startTs })),
-      );
+  pingGateway() {
+    // const startTs = Date.now();
+    // const pattern = { cmd: 'ping' };
+    // const payload = {};
+    // return this.clientServiceA
+    //   .send<string>(pattern, payload)
+    //   .pipe(
+    //     map((message: string) => ({ message, duration: Date.now() - startTs })),
+    //   );
   }
 
 }

@@ -6,7 +6,7 @@ import { map } from 'rxjs';
 export class ApiGatewayService {
 
   constructor(
-    @Inject('SERVICE_A') private readonly clientServiceA: ClientProxy,
+    @Inject('SERVICE_PAP') private readonly clientServiceA: ClientProxy,
   ) { }
 
   getHello(): string {
@@ -19,7 +19,7 @@ export class ApiGatewayService {
     return this.clientServiceA
       .send<string>(pattern, payload)
       .pipe(
-        map((message: string) => ({ message, duration: Date.now() - startTs })),
+        map((message: string) => ({ message })),
       );
   }
 }
